@@ -1,6 +1,6 @@
 {
   "name": "react-native-worklet-functions",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "license": "MIT",
   "description": "Useful util functions available on UI thread in React Native",
