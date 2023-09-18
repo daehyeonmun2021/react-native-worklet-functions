@@ -1,6 +1,16 @@
 # react-native-worklet-functions
 Util functions available on UI thread in React Native
 
+## Installation
+Install the library using yarn:
+```sh
+yarn add react-native-worklet-functions
+```
+Or using npm:
+```sh
+npm install react-native-worklet-functions
+```
+
 ## Motivation
 One of the keys to make smooth animations in React Native is to run animation logic on UI thread. <br/>
 But when you make animation with utils like lodash, you have to make them "worklet" to run it on UI thread. <br/>
