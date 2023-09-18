@@ -1,5 +1,5 @@
 # react-native-worklet-functions
-Lodash functions available on UI thread in React Native
+Util functions available on UI thread in React Native
 
 ## Motivation
 One of the keys to make smooth animations in React Native is to run animation logic on UI thread. <br/>
