@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": false,
   "license": "MIT",
-  "description": "Utility library to use useful functions on UI thread in React Native",
+  "description": "Useful util functions available on UI thread in React Native",
   "author": "Daehyeon Mun <dhmun00@gmail.com>",
   "contributors": [
     {
