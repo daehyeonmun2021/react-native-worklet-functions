@@ -4,7 +4,7 @@ Lodash functions available on UI thread in React Native
 ## Motivation
 One of the keys to make smooth animations in React Native is to run animation logic on UI thread. <br/>
 But when you make animation with utils like lodash, you have to make them "worklet" to run it on UI thread. <br/>
-With these utils, you don't need to do it. Just use as you use lodash on JS thread.
+With these utils, you can use lodash functions on UI thread.
 
 ## Usage
 You can use these functions on UI thread.
