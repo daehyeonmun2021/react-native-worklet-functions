@@ -1,16 +1,17 @@
 import {
-  add,
-  subtract,
-  multiply,
-  divide,
-  min,
-  max,
-  round,
-  floor,
-  ceil,
   abs,
-  sqrt,
+  add,
   between,
+  ceil,
+  divide,
+  floor,
+  max,
+  median,
+  min,
+  multiply,
+  round,
+  sqrt,
+  subtract,
   toDeg,
   toRad,
 } from '..';
@@ -166,6 +167,33 @@ describe('math functions', () => {
     it('should return true if a value is equal to one of the other values', () => {
       expect(between(2, 1, 2)).toBe(true);
       expect(between(0, -1, 0)).toBe(true);
+    });
+  });
+
+  describe('median', () => {
+    it('should return the median of an odd number of arguments', () => {
+      const result = median(1, 2, 3, 4, 5);
+      expect(result).toBe(3);
+    });
+
+    it('should return the median of an even number of arguments', () => {
+      const result = median(1, 2, 3, 4);
+      expect(result).toBe(2.5);
+    });
+
+    it('should work with negative numbers', () => {
+      const result = median(-5, -3, 0, 2, 4);
+      expect(result).toBe(0);
+    });
+
+    it('should work with duplicate numbers', () => {
+      const result = median(1, 2, 2, 3, 4);
+      expect(result).toBe(2);
+    });
+
+    it('should work with a single argument', () => {
+      const result = median(1);
+      expect(result).toBe(1);
     });
   });
 });

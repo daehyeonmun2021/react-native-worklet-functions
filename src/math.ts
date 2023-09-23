@@ -28,6 +28,18 @@ export const min = (...args: number[]) => {
   return Math.min(...args);
 };
 
+export const median = (...args: number[]) => {
+  'worklet';
+
+  const sorted = args.sort();
+
+  if (sorted.length % 2 === 0) {
+    return (sorted[sorted.length / 2 - 1] + sorted[sorted.length / 2]) / 2;
+  }
+
+  return sorted[(sorted.length - 1) / 2];
+};
+
 export const max = (...args: number[]) => {
   'worklet';
 
