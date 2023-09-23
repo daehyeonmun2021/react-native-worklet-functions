@@ -1,6 +1,7 @@
 import {
   chunk,
   clamp,
+  concat,
   debounce,
   find,
   findIndex,
@@ -380,6 +381,31 @@ describe('lodash functions', () => {
       const predicate = (v: { id: number; name: string }) => v.name === 'Bob';
       const result = findIndex(arr, predicate);
       expect(result).toBe(1);
+    });
+  });
+
+  describe('concat', () => {
+    it('should concatenate multiple arrays into a single array', () => {
+      const arr1 = [1, 2, 3];
+      const arr2 = [4, 5, 6];
+      const arr3 = [7, 8, 9];
+      const result = concat(arr1, arr2, arr3);
+      expect(result).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    });
+
+    it('should work with empty arrays', () => {
+      const arr1: number[] = [];
+      const arr2: number[] = [];
+      const result = concat(arr1, arr2);
+      expect(result).toEqual([]);
+    });
+
+    it('should work with arrays of different types', () => {
+      const arr1 = [1, 2, 3];
+      const arr2 = ['a', 'b', 'c'];
+      const arr3 = [true, false];
+      const result = concat(arr1, arr2, arr3);
+      expect(result).toEqual([1, 2, 3, 'a', 'b', 'c', true, false]);
     });
   });
 });

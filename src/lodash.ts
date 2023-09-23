@@ -222,3 +222,9 @@ export const findIndex = <T>(arr: T[], predicate: (v: T) => boolean) => {
 
   return -1;
 };
+
+export const concat = (...args: any[][]) => {
+  'worklet';
+
+  return args.flat();
+};
