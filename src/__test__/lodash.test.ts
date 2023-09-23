@@ -2,6 +2,7 @@ import {
   chunk,
   clamp,
   debounce,
+  find,
   groupBy,
   head,
   isEqual,
@@ -310,6 +311,40 @@ describe('lodash functions', () => {
       const result = times(n, iteratee);
       expect(result).toEqual([]);
       expect(iteratee).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('find', () => {
+    it('should return the first element that satisfies the predicate', () => {
+      const arr = [1, 2, 3, 4, 5];
+      const predicate = (v: number) => v % 2 === 0;
+      const result = find(arr, predicate);
+      expect(result).toBe(2);
+    });
+
+    it('should return undefined if no element satisfies the predicate', () => {
+      const arr = [1, 3, 5, 7, 9];
+      const predicate = (v: number) => v % 2 === 0;
+      const result = find(arr, predicate);
+      expect(result).toBeUndefined();
+    });
+
+    it('should work with an empty array', () => {
+      const arr: number[] = [];
+      const predicate = (v: number) => v % 2 === 0;
+      const result = find(arr, predicate);
+      expect(result).toBeUndefined();
+    });
+
+    it('should work with an array of objects', () => {
+      const arr = [
+        { id: 1, name: 'Alice' },
+        { id: 2, name: 'Bob' },
+        { id: 3, name: 'Charlie' },
+      ];
+      const predicate = (v: { id: number; name: string }) => v.name === 'Bob';
+      const result = find(arr, predicate);
+      expect(result).toEqual({ id: 2, name: 'Bob' });
     });
   });
 });
