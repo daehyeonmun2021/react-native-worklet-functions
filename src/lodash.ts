@@ -210,3 +210,15 @@ export const find = <T>(arr: T[], predicate: (v: T) => boolean) => {
 
   return undefined;
 };
+
+export const findIndex = <T>(arr: T[], predicate: (v: T) => boolean) => {
+  'worklet';
+
+  for (let i = 0; i < arr.length; i++) {
+    if (predicate(arr[i])) {
+      return i;
+    }
+  }
+
+  return -1;
+};

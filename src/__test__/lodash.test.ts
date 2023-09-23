@@ -3,6 +3,7 @@ import {
   clamp,
   debounce,
   find,
+  findIndex,
   groupBy,
   head,
   isEqual,
@@ -345,6 +346,40 @@ describe('lodash functions', () => {
       const predicate = (v: { id: number; name: string }) => v.name === 'Bob';
       const result = find(arr, predicate);
       expect(result).toEqual({ id: 2, name: 'Bob' });
+    });
+  });
+
+  describe('findIndex', () => {
+    it('should return the index of the first element that satisfies the predicate', () => {
+      const arr = [1, 2, 3, 4, 5];
+      const predicate = (v: number) => v % 2 === 0;
+      const result = findIndex(arr, predicate);
+      expect(result).toBe(1);
+    });
+
+    it('should return -1 if no element satisfies the predicate', () => {
+      const arr = [1, 3, 5, 7, 9];
+      const predicate = (v: number) => v % 2 === 0;
+      const result = findIndex(arr, predicate);
+      expect(result).toBe(-1);
+    });
+
+    it('should work with an empty array', () => {
+      const arr: number[] = [];
+      const predicate = (v: number) => v % 2 === 0;
+      const result = findIndex(arr, predicate);
+      expect(result).toBe(-1);
+    });
+
+    it('should work with an array of objects', () => {
+      const arr = [
+        { id: 1, name: 'Alice' },
+        { id: 2, name: 'Bob' },
+        { id: 3, name: 'Charlie' },
+      ];
+      const predicate = (v: { id: number; name: string }) => v.name === 'Bob';
+      const result = findIndex(arr, predicate);
+      expect(result).toBe(1);
     });
   });
 });
