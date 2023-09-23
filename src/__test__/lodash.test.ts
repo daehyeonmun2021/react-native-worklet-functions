@@ -26,6 +26,7 @@ import {
   times,
   values,
   without,
+  zip,
   zipObject,
 } from '..';
 
@@ -499,6 +500,36 @@ describe('lodash functions', () => {
     it('should work with an empty object', () => {
       const obj = {};
       const result = values(obj);
+      expect(result).toEqual([]);
+    });
+  });
+
+  describe('zip', () => {
+    it('should zip two arrays of the same length', () => {
+      const arr1 = [1, 2, 3];
+      const arr2 = ['a', 'b', 'c'];
+      const result = zip(arr1, arr2);
+      expect(result).toEqual([
+        [1, 'a'],
+        [2, 'b'],
+        [3, 'c'],
+      ]);
+    });
+
+    it('should zip two arrays of different lengths', () => {
+      const arr1 = [1, 2, 3];
+      const arr2 = ['a', 'b'];
+      const result = zip(arr1, arr2);
+      expect(result).toEqual([
+        [1, 'a'],
+        [2, 'b'],
+      ]);
+    });
+
+    it('should work with empty arrays', () => {
+      const arr1: number[] = [];
+      const arr2: string[] = [];
+      const result = zip(arr1, arr2);
       expect(result).toEqual([]);
     });
   });

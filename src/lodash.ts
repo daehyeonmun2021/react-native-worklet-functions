@@ -56,6 +56,17 @@ export const tail = <T>(arr: T[]) => {
   return arr[arr.length - 1];
 };
 
+export const zip = <T, U>(arr1: T[], arr2: U[]) => {
+  'worklet';
+
+  const result = [];
+  for (let i = 0; i < Math.min(arr1.length, arr2.length); i++) {
+    result.push([arr1[i], arr2[i]]);
+  }
+
+  return result;
+};
+
 export const zipObject = <T extends string | number | symbol, U>(props: T[], values: U[]) => {
   'worklet';
 
