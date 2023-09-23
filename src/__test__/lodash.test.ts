@@ -8,10 +8,12 @@ import {
   findIndex,
   groupBy,
   head,
+  isEmpty,
   isEqual,
   isNil,
   isNull,
   isUndefined,
+  keys,
   nth,
   random,
   range,
@@ -22,6 +24,7 @@ import {
   take,
   throttle,
   times,
+  values,
   without,
   zipObject,
 } from '..';
@@ -431,6 +434,72 @@ describe('lodash functions', () => {
       ];
       const result = count(arr);
       expect(result).toBe(3);
+    });
+  });
+
+  describe('count', () => {
+    it('should return the length of an array', () => {
+      const arr = [1, 2, 3, 4, 5];
+      const result = count(arr);
+      expect(result).toBe(5);
+    });
+
+    it('should return 0 for an empty array', () => {
+      const arr: number[] = [];
+      const result = count(arr);
+      expect(result).toBe(0);
+    });
+
+    it('should work with an array of objects', () => {
+      const arr = [
+        { id: 1, name: 'Alice' },
+        { id: 2, name: 'Bob' },
+        { id: 3, name: 'Charlie' },
+      ];
+      const result = count(arr);
+      expect(result).toBe(3);
+    });
+  });
+
+  describe('isEmpty', () => {
+    it('should return true for an empty array', () => {
+      const arr: number[] = [];
+      const result = isEmpty(arr);
+      expect(result).toBe(true);
+    });
+
+    it('should return false for a non-empty array', () => {
+      const arr = [1, 2, 3];
+      const result = isEmpty(arr);
+      expect(result).toBe(false);
+    });
+  });
+
+  describe('keys', () => {
+    it('should return the keys of an object', () => {
+      const obj = { a: 1, b: 2, c: 3 };
+      const result = keys(obj);
+      expect(result).toEqual(['a', 'b', 'c']);
+    });
+
+    it('should work with an empty object', () => {
+      const obj = {};
+      const result = keys(obj);
+      expect(result).toEqual([]);
+    });
+  });
+
+  describe('values', () => {
+    it('should return the values of an object', () => {
+      const obj = { a: 1, b: 2, c: 3 };
+      const result = values(obj);
+      expect(result).toEqual([1, 2, 3]);
+    });
+
+    it('should work with an empty object', () => {
+      const obj = {};
+      const result = values(obj);
+      expect(result).toEqual([]);
     });
   });
 });

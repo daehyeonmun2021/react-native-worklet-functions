@@ -234,3 +234,21 @@ export const count = (arr: any[]) => {
 
   return arr.length;
 };
+
+export const isEmpty = (arr: any[]) => {
+  'worklet';
+
+  return arr.length === 0;
+};
+
+export const keys = <T extends Record<string, any>>(obj: T) => {
+  'worklet';
+
+  return Object.keys(obj) as (keyof T)[];
+};
+
+export const values = <T extends Record<string, any>>(obj: T) => {
+  'worklet';
+
+  return Object.values(obj) as T[keyof T][];
+};
