@@ -2,6 +2,7 @@ import {
   chunk,
   clamp,
   concat,
+  count,
   debounce,
   find,
   findIndex,
@@ -406,6 +407,30 @@ describe('lodash functions', () => {
       const arr3 = [true, false];
       const result = concat(arr1, arr2, arr3);
       expect(result).toEqual([1, 2, 3, 'a', 'b', 'c', true, false]);
+    });
+  });
+
+  describe('count', () => {
+    it('should return the length of an array', () => {
+      const arr = [1, 2, 3, 4, 5];
+      const result = count(arr);
+      expect(result).toBe(5);
+    });
+
+    it('should return 0 for an empty array', () => {
+      const arr: number[] = [];
+      const result = count(arr);
+      expect(result).toBe(0);
+    });
+
+    it('should work with an array of objects', () => {
+      const arr = [
+        { id: 1, name: 'Alice' },
+        { id: 2, name: 'Bob' },
+        { id: 3, name: 'Charlie' },
+      ];
+      const result = count(arr);
+      expect(result).toBe(3);
     });
   });
 });

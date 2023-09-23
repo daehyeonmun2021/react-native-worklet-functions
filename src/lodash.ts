@@ -228,3 +228,9 @@ export const concat = (...args: any[][]) => {
 
   return args.flat();
 };
+
+export const count = (arr: any[]) => {
+  'worklet';
+
+  return arr.length;
+};
