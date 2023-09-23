@@ -17,6 +17,7 @@ import {
   tail,
   take,
   throttle,
+  times,
   without,
   zipObject,
 } from '..';
@@ -276,6 +277,39 @@ describe('lodash functions', () => {
         odd: [1, 3, 5],
         even: [2, 4],
       });
+    });
+  });
+
+  describe('times', () => {
+    it('should call the iteratee function n times', () => {
+      const n = 5;
+      const iteratee = jest.fn();
+      times(n, iteratee);
+      expect(iteratee).toHaveBeenCalledTimes(n);
+    });
+
+    it('should pass the index to the iteratee function', () => {
+      const n = 3;
+      const iteratee = jest.fn();
+      times(n, iteratee);
+      expect(iteratee).toHaveBeenCalledWith(0);
+      expect(iteratee).toHaveBeenCalledWith(1);
+      expect(iteratee).toHaveBeenCalledWith(2);
+    });
+
+    it('should return an array of the results of calling the iteratee function', () => {
+      const n = 4;
+      const iteratee = (i: number) => i * 2;
+      const result = times(n, iteratee);
+      expect(result).toEqual([0, 2, 4, 6]);
+    });
+
+    it('should return an empty array when n is 0', () => {
+      const n = 0;
+      const iteratee = jest.fn();
+      const result = times(n, iteratee);
+      expect(result).toEqual([]);
+      expect(iteratee).not.toHaveBeenCalled();
     });
   });
 });

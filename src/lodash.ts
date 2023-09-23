@@ -187,3 +187,14 @@ export const groupBy = <T>(arr: Array<T>, iteratee: (v: T) => any): Record<keyof
   }
   return result;
 };
+
+export const times = <T>(n: number, iteratee: (index: number) => T) => {
+  'worklet';
+
+  const result = [];
+  for (let i = 0; i < n; i++) {
+    result.push(iteratee(i));
+  }
+
+  return result;
+};
