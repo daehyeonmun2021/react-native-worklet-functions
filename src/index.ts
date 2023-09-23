@@ -1,2 +1,2 @@
-export * from './math'
-export * from './lodash'
+export * from './math';
+export * from './util';
