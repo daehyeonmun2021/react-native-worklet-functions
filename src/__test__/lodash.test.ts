@@ -1,23 +1,24 @@
 import {
-  sample,
-  sampleSize,
-  random,
-  clamp,
-  nth,
-  head,
-  tail,
-  zipObject,
   chunk,
-  take,
-  without,
-  shuffle,
+  clamp,
   debounce,
-  throttle,
-  isNull,
-  isUndefined,
+  groupBy,
+  head,
   isEqual,
   isNil,
+  isNull,
+  isUndefined,
+  nth,
+  random,
   range,
+  sample,
+  sampleSize,
+  shuffle,
+  tail,
+  take,
+  throttle,
+  without,
+  zipObject,
 } from '..';
 
 describe('lodash functions', () => {
@@ -236,6 +237,45 @@ describe('lodash functions', () => {
     it('should return an empty array if start is greater than or equal to end', () => {
       const result = range(5, 1);
       expect(result).toEqual([]);
+    });
+  });
+
+  describe('groupBy', () => {
+    it('should group an array of objects by a given key', () => {
+      const arr = [
+        { id: 1, name: 'Alice' },
+        { id: 2, name: 'Bob' },
+        { id: 3, name: 'Charlie' },
+        { id: 4, name: 'Alice' },
+        { id: 5, name: 'Bob' },
+      ];
+      const result = groupBy(arr, (v) => v.name);
+      expect(result).toEqual({
+        Alice: [
+          { id: 1, name: 'Alice' },
+          { id: 4, name: 'Alice' },
+        ],
+        Bob: [
+          { id: 2, name: 'Bob' },
+          { id: 5, name: 'Bob' },
+        ],
+        Charlie: [{ id: 3, name: 'Charlie' }],
+      });
+    });
+
+    it('should return an empty object when given an empty array', () => {
+      const arr: any[] = [];
+      const result = groupBy(arr, (v) => v);
+      expect(result).toEqual({});
+    });
+
+    it('should group an array of numbers by their parity', () => {
+      const arr = [1, 2, 3, 4, 5];
+      const result = groupBy(arr, (v) => (v % 2 === 0 ? 'even' : 'odd'));
+      expect(result).toEqual({
+        odd: [1, 3, 5],
+        even: [2, 4],
+      });
     });
   });
 });

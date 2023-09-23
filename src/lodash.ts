@@ -169,3 +169,21 @@ export const range = (start: number, end: number, step = 1) => {
 
   return result;
 };
+
+export const groupBy = <T>(arr: Array<T>, iteratee: (v: T) => any): Record<keyof T[], T[]> => {
+  'worklet';
+
+  if (isNil(arr)) {
+    return {} as Record<keyof T[], T[]>;
+  }
+
+  const result = {} as Record<keyof T[], T[]>;
+  for (let i = 0; i < arr.length; i++) {
+    const key = iteratee(arr[i]);
+    if (!result[key]) {
+      result[key] = [];
+    }
+    result[key].push(arr[i]);
+  }
+  return result;
+};
