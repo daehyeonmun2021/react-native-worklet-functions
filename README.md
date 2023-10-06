@@ -94,24 +94,6 @@ const tap = Gesture.Tap()
 | `toDeg(rad: number)`                                   | Convert radians to degrees                                                     |
 | `toRad(deg: number)`                                   | Convert degrees to radians                                                     |
 
-#### Vector
-
-| Name                        | Description                                                                              |
-| --------------------------- | ---------------------------------------------------------------------------------------- |
-| `add(v:IVector)`            | Adds this vector to the incoming vector v                                                |
-| `angleBetween(v:IVector)`   | Returns the angle in radians between this vector and the incoming vector v               |
-| `clone()`                   | Returns a clone of this vector                                                           |
-| `dist(v:IVector)`           | Returns the distance between this vector and the incoming vector v                       |
-| `divide(v:IVector)`         | Divides this vector by the incoming vector v                                             |
-| `dot(v:IVector)`            | Returns the dot product between this vector and the incoming vector v                    |
-| `lerp(v:IVector, n:number)` | Performs a linear interpolation between this vector and the incoming vector v based on n |
-| `magnitude()`               | Returns the magnitude of this vector                                                     |
-| `multiply(v:IVector)`       | Multiplies this vector by the incoming vector v                                          |
-| `normalize()`               | Normalizes this vector                                                                   |
-| `rotate(radian:number)`     | Rotates this vector by the specified angle in radians                                    |
-| `set(x:number, y:number)`   | Sets the x and y values of this vector                                                   |
-| `subtract(v:IVector)`       | Subtracts the incoming vector v from this vector                                         |
-
 #### Geometry
 
 | Name                                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
