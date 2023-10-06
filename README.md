@@ -40,50 +40,80 @@ const tap = Gesture.Tap()
 
 ### Methods
 
-| Name                                                | Description                                                                                   |
-| --------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `abs(value:number)`                                 | Return the absolute value of the number                                                       |
-| `add(a:number, b:number)`                           | Add a, b                                                                                      |
-| `between(value:number, lower:number, upper:number)` | Check if the value is between lower and upper, inclusive                                      |
-| `ceil(value:number, precision:number)`              | Round the value up to the nearest integer or to the specified decimal places                  |
-| `chunk(arr:T[], size:number)`                       | Split array into chunks of length size                                                        |
-| `clamp(value:number, lower:number, upper:number)`   | Clamp a number between lower and upper bounds                                                 |
-| `concat(...args:any[][])`                           | Concatenate arrays or values into a single array.                                             |
-| `count(arr:any[])`                                  | Return the length of an array.                                                                |
-| `debounce(func:T, wait:number)`                     | Debounce a function by wait milliseconds                                                      |
-| `divide(a:number, b:number)`                        | Divide a, b                                                                                   |
-| `find(arr:T[], predicate:Function)`                 | Return the first element that matches the predicate. Returns `undefined` if none found.       |
-| `findIndex(arr:T[], predicate:Function)`            | Return the index of the first element that matches the predicate. Returns `-1` if none found. |
-| `floor(value:number, precision:number)`             | Round the value down to the nearest integer or to the specified decimal places                |
-| `groupBy(arr:T[], iteratee:Function)`               | Group an array into an object where the keys are produced by the iteratee function.           |
-| `head(arr:T[])`                                     | Return the first element from an array                                                        |
-| `isEmpty(arr:any[])`                                | Check if an array is empty. Returns `true` if empty, `false` otherwise.                       |
-| `isEqual(a:any, b:any)`                             | Check if two values are equal                                                                 |
-| `isNil(value: any)`                                 | Check if a value is null or undefined                                                         |
-| `isNull(value:any)`                                 | Check if a value is null                                                                      |
-| `isUndefined(value:any)`                            | Check if a value is undefined                                                                 |
-| `keys(obj:T)`                                       | Return an array of the own enumerable properties of an object.                                |
-| `max(...args:number[])`                             | Return the largest number among the arguments                                                 |
-| `median(...args:number[])`                          | Return the median of an array of numbers.                                                     |
-| `min(...args:number[])`                             | Return the smallest number among the arguments                                                |
-| `multiply(a:number, b:number)`                      | Multiply a, b                                                                                 |
-| `nth(arr:T[], index:number)`                        | Return the nth element from an array                                                          |
-| `random(min:number, max:number)`                    | Generate a random integer between min and max, inclusive                                      |
-| `range(start:number, end:number, step:number)`      | Generate an array of numbers from start to end, incrementing by step                          |
-| `round(value:number, precision:number)`             | Round the value to the nearest integer or to the specified decimal places                     |
-| `sample(arr:T[])`                                   | Return a random element from an array                                                         |
-| `sampleSize(arr:T[], n:number)`                     | Return n random unique elements from an array                                                 |
-| `shuffle(arr:T[])`                                  | Shuffle the elements of an array                                                              |
-| `sqrt(value:number)`                                | Return the square root of the number                                                          |
-| `subtract(a:number, b:number)`                      | Subtract a, b                                                                                 |
-| `tail(arr:T[])`                                     | Return the last element from an array                                                         |
-| `take(arr:T[], n:number)`                           | Take the first n elements from an array                                                       |
-| `throttle(func:T, wait:number)`                     | Throttle a function by wait milliseconds                                                      |
-| `times(n:number, iteratee:Function)`                | Calls the iteratee function n times and stores the results in an array.                       |
-| `toDeg(rad:number)`                                 | Convert radians to degrees                                                                    |
-| `toRad(deg:number)`                                 | Convert degrees to radians                                                                    |
-| `values(obj:T)`                                     | Return an array of the own enumerable property values of an object.                           |
-| `without(arr:T[], ...values:T[])`                   | Remove all instances of values from an array                                                  |
-| `zip(arr1:T[], arr2:U[])`                           | Zip two arrays into an array of pairs. Shortest array length is used.                         |
-| `zipObject(props:T[], values:U[])`                  | Create an object from arrays of keys and values                                               |
-| `size(width: number, height?: number)`            | Create an object with following utility properties and methods. This object contains: <br><br> <ul><li> **width** (number): The width of the object. </li><li> **height** (number): The height of the object. If not provided, defaults to the value of `width`. </li><li> **styleObj** (Object): An object containing the width and height as properties. </li><li> **tuple** ([number, number]): A tuple representing the width and height. </li><li> **getCenter(x?: number, y?: number)** (Function): A method that returns the center of the object. <br><br> **Subfunctions**:<br> <table><tr><th>Method</th><th>Description</th><th>Example</th></tr><tr><td>`getCenter(x?: number, y?: number)`</td><td>Calculates and returns the center coordinates of the object, relative to optional x and y parameters.</td><td>```const mySize = size(10, 20);  const center = mySize.getCenter(10, 10);```</td></tr></table> </li></ul> |
+#### Util
+
+| Name                                                 | Description                                                          |
+| ---------------------------------------------------- | -------------------------------------------------------------------- |
+| `chunk(arr: T[], size: number)`                      | Divide array into chunks of size                                     |
+| `clamp(value: number, lower: number, upper: number)` | Clamp a number between lower and upper limits                        |
+| `concat(...args: any[][])`                           | Concatenate multiple arrays                                          |
+| `count(arr: any[])`                                  | Get the length of the array                                          |
+| `debounce(func: T, wait = 0)`                        | Debounce function calls                                              |
+| `find(arr: T[], predicate: (v: T) => boolean)`       | Find first element that satisfies the predicate                      |
+| `findIndex(arr: T[], predicate: (v: T) => boolean)`  | Find index of the first element that satisfies the predicate         |
+| `groupBy(arr: Array<T>, iteratee: (v: T) => any)`    | Group elements in array based on iteratee                            |
+| `head(arr: T[])`                                     | Get the first element of an array                                    |
+| `isEmpty(arr: any[])`                                | Check if array is empty                                              |
+| `isEqual(a: any, b: any)`                            | Check if two values are equal                                        |
+| `isNil(value: T)`                                    | Check if value is null or undefined                                  |
+| `isNull(value: any)`                                 | Check if value is null                                               |
+| `isUndefined(value: any)`                            | Check if value is undefined                                          |
+| `keys(obj: T)`                                       | Get keys of an object                                                |
+| `nth(arr: T[], index: number)`                       | Get the nth element of an array                                      |
+| `random(min: number, max: number)`                   | Generate a random number between min and max                         |
+| `range(start: number, end: number, step = 1)`        | Generate an array of numbers between start and end, stepping by step |
+| `sample(arr: T[])`                                   | Pick a random element from an array                                  |
+| `sampleSize(arr: T[], n: number)`                    | Pick n random elements from an array                                 |
+| `shuffle(arr: T[])`                                  | Shuffle an array                                                     |
+| `tail(arr: T[])`                                     | Get the last element of an array                                     |
+| `take(arr: T[], n: number)`                          | Take first n elements of an array                                    |
+| `throttle(func: T, wait = 0)`                        | Throttle function calls                                              |
+| `times(n: number, iteratee: (index: number) => T)`   | Repeat an action n times and collect results                         |
+| `values(obj: T)`                                     | Get values of an object                                              |
+| `without(arr: T[], ...values: T[])`                  | Remove specified values from an array                                |
+| `zip(arr1: T[], arr2: U[])`                          | Zip two arrays together                                              |
+| `zipObject(props: T[], values: U[])`                 | Create an object from arrays of keys and values                      |
+
+#### Math
+
+| Name                                                   | Description                                                                    |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `abs(value: number)`                                   | Return the absolute value of the number                                        |
+| `add(a: number, b: number)`                            | Add a, b                                                                       |
+| `between(value: number, lower: number, upper: number)` | Check if the value is between lower and upper, inclusive                       |
+| `ceil(value: number, precision = 0)`                   | Round the value up to the nearest integer or to the specified decimal places   |
+| `divide(a: number, b: number)`                         | Divide a, b                                                                    |
+| `floor(value: number, precision = 0)`                  | Round the value down to the nearest integer or to the specified decimal places |
+| `max(...args: number[])`                               | Return the largest number among the arguments                                  |
+| `median(...args: number[])`                            | Return the median of an array of numbers                                       |
+| `min(...args: number[])`                               | Return the smallest number among the arguments                                 |
+| `multiply(a: number, b: number)`                       | Multiply a, b                                                                  |
+| `round(value: number, precision = 0)`                  | Round the value to the nearest integer or to the specified decimal places      |
+| `sqrt(value: number)`                                  | Return the square root of the number                                           |
+| `subtract(a: number, b: number)`                       | Subtract a, b                                                                  |
+| `toDeg(rad: number)`                                   | Convert radians to degrees                                                     |
+| `toRad(deg: number)`                                   | Convert degrees to radians                                                     |
+
+#### Vector
+
+| Name                        | Description                                                                              |
+| --------------------------- | ---------------------------------------------------------------------------------------- |
+| `add(v:IVector)`            | Adds this vector to the incoming vector v                                                |
+| `angleBetween(v:IVector)`   | Returns the angle in radians between this vector and the incoming vector v               |
+| `clone()`                   | Returns a clone of this vector                                                           |
+| `dist(v:IVector)`           | Returns the distance between this vector and the incoming vector v                       |
+| `divide(v:IVector)`         | Divides this vector by the incoming vector v                                             |
+| `dot(v:IVector)`            | Returns the dot product between this vector and the incoming vector v                    |
+| `lerp(v:IVector, n:number)` | Performs a linear interpolation between this vector and the incoming vector v based on n |
+| `magnitude()`               | Returns the magnitude of this vector                                                     |
+| `multiply(v:IVector)`       | Multiplies this vector by the incoming vector v                                          |
+| `normalize()`               | Normalizes this vector                                                                   |
+| `rotate(radian:number)`     | Rotates this vector by the specified angle in radians                                    |
+| `set(x:number, y:number)`   | Sets the x and y values of this vector                                                   |
+| `subtract(v:IVector)`       | Subtracts the incoming vector v from this vector                                         |
+
+#### Geometry
+
+| Name                                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `size(width: number, height?: number)` | Create an object with following utility properties and methods. This object contains: <br><br> <ul><li> **width** (number): The width of the object. </li><li> **height** (number): The height of the object. If not provided, defaults to the value of `width`. </li><li> **styleObj** (Object): An object containing the width and height as properties. </li><li> **tuple** ([number, number]): A tuple representing the width and height. </li><li> **getCenter(x?: number, y?: number)** (Function): A method that returns the center of the object. <br><br> **Subfunctions**:<br> <table><tr><th>Method</th><th>Description</th><th>Example</th></tr><tr><td>`getCenter(x?: number, y?: number)`</td><td>Calculates and returns the center coordinates of the object, relative to optional x and y parameters.</td><td>`const mySize = size(10, 20);  const center = mySize.getCenter(10, 10);`</td></tr></table> </li></ul> |
