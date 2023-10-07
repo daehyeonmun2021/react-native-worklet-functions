@@ -94,6 +94,25 @@ const tap = Gesture.Tap()
 | `toDeg(rad: number)`                                   | Convert radians to degrees                                                     |
 | `toRad(deg: number)`                                   | Convert degrees to radians                                                     |
 
+#### Vector
+
+| Name                                                  | Description                                 |
+| ----------------------------------------------------- | ------------------------------------------- |
+| `vec(x: number, y?: number)`                          | Create a vector                             |
+| `vector.add(v1: Vector, v2: Vector \| number)`        | Add two vectors or add a scalar to a vector |
+| `vector.subtract(v1: Vector, v2: Vector \| number)`   | Subtract a vector or scalar from a vector   |
+| `vector.divide(v1: Vector, v2: Vector \| number)`     | Divide a vector or scalar by a vector       |
+| `vector.multiply(v1: Vector, v2: Vector \| number)`   | Multiply a vector or scalar by a vector     |
+| `vector.distance(v1: Vector, v2: Vector)`             | Calculate distance between two vectors      |
+| `vector.angleBetween(v1: Vector, v2: Vector)`         | Calculate angle between two vectors         |
+| `vector.normalize(v: Vector)`                         | Normalize a vector                          |
+| `vector.dot(v1: Vector, v2: Vector)`                  | Dot product of two vectors                  |
+| `vector.cross(v1: Vector, v2: Vector)`                | Cross product of two vectors                |
+| `vector.magnitude(v: Vector)`                         | Calculate the magnitude of a vector         |
+| `vector.rotate(v: Vector, radian: number)`            | Rotate a vector by a given radian           |
+| `vector.lerp(v1: Vector, v2: Vector, amount: number)` | Linearly interpolate between two vectors    |
+| `vector.clone(v: Vector)`                             | Clone a vector                              |
+
 #### Geometry
 
 | Name                                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
