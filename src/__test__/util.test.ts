@@ -30,7 +30,7 @@ import {
   zipObject,
 } from '..';
 
-describe('lodash functions', () => {
+describe('util functions', () => {
   describe('sample', () => {
     it('should return a random element from an array', () => {
       const arr = [1, 2, 3, 4, 5];
@@ -177,58 +177,63 @@ describe('lodash functions', () => {
     });
   });
 
+  jest.useFakeTimers();
+
   describe('debounce', () => {
-    it('should delay the execution of a function by the specified wait time', () => {
-      jest.useFakeTimers();
-      const func = jest.fn();
-      const debouncedFunc = debounce(func, 100);
-      debouncedFunc();
-      expect(func).not.toHaveBeenCalled();
-      jest.advanceTimersByTime(50);
-      debouncedFunc();
-      expect(func).not.toHaveBeenCalled();
-      jest.advanceTimersByTime(100);
-      expect(func).toHaveBeenCalledTimes(1);
+    it('should debounce function calls', () => {
+      const mockFn = jest.fn();
+      const debouncedFn = debounce(mockFn, 1000);
+
+      // 첫 번째 호출: 즉시 실행되어야 함
+      debouncedFn();
+      expect(mockFn).toHaveBeenCalledTimes(1);
+
+      // 두 번째 호출: debounce로 인해 실행되지 않아야 함
+      debouncedFn();
+      expect(mockFn).toHaveBeenCalledTimes(1);
+
+      // 시간을 500ms 앞당김
+      jest.advanceTimersByTime(500);
+
+      // 세 번째 호출: debounce로 인해 실행되지 않아야 함
+      debouncedFn();
+      expect(mockFn).toHaveBeenCalledTimes(1);
+
+      // 시간을 추가로 1100ms 앞당김 (총 1600ms)
+      jest.advanceTimersByTime(1100);
+
+      // 여기까지 debounce 시간이 지나더라도 중간에 호출이 있었으므로 함수가 실행되지 않아야 함
+      expect(mockFn).toHaveBeenCalledTimes(1);
+
+      // 추가로 1000ms 기다림
+      jest.advanceTimersByTime(1000);
+
+      // 이제는 debounce 시간이 충분히 지났으므로 함수가 다시 실행되어야 함
+      debouncedFn();
+      expect(mockFn).toHaveBeenCalledTimes(2);
     });
   });
 
   describe('throttle', () => {
-    it('should delay the execution of a function by the specified wait time', () => {
-      jest.useFakeTimers();
-      const func = jest.fn();
-      const throttledFunc = throttle(func, 100);
-      throttledFunc();
-      expect(func).not.toHaveBeenCalled();
-      jest.advanceTimersByTime(50);
-      throttledFunc();
-      expect(func).not.toHaveBeenCalled();
-      jest.advanceTimersByTime(100);
-      expect(func).toHaveBeenCalledTimes(1);
-    });
+    it('should throttle calls', () => {
+      const mockFn = jest.fn();
+      const throttledFn = throttle(mockFn, 1000);
 
-    it('should pass the arguments to the throttled function', () => {
-      jest.useFakeTimers();
-      const func = jest.fn();
-      const throttledFunc = throttle(func, 100);
-      throttledFunc(1, 2, 3);
-      jest.advanceTimersByTime(100);
-      expect(func).toHaveBeenCalledWith(1, 2, 3);
-    });
+      throttledFn();
+      expect(mockFn).toHaveBeenCalledTimes(1);
 
-    it('should only execute the function once during the wait time', () => {
-      jest.useFakeTimers();
-      const func = jest.fn();
-      const throttledFunc = throttle(func, 100);
-      throttledFunc();
-      throttledFunc();
-      throttledFunc();
-      expect(func).not.toHaveBeenCalled();
-      jest.advanceTimersByTime(50);
-      expect(func).not.toHaveBeenCalled();
-      throttledFunc();
-      expect(func).not.toHaveBeenCalled();
-      jest.advanceTimersByTime(100);
-      expect(func).toHaveBeenCalledTimes(1);
+      throttledFn();
+      expect(mockFn).toHaveBeenCalledTimes(1);
+
+      jest.advanceTimersByTime(500);
+
+      throttledFn();
+      expect(mockFn).toHaveBeenCalledTimes(1);
+
+      jest.advanceTimersByTime(600);
+
+      throttledFn();
+      expect(mockFn).toHaveBeenCalledTimes(2);
     });
   });
 

@@ -112,37 +112,44 @@ export const shuffle = <T>(arr: T[]) => {
   return arr.slice().sort(() => Math.random() - 0.5);
 };
 
-export const debounce = <T extends (...args: any[]) => any>(func: T, wait = 0) => {
+export const debounce = <T extends (...args: any[]) => any>(worklet: T, wait = 0) => {
   'worklet';
 
-  let timeout: NodeJS.Timeout | undefined;
-
-  return (...args: Parameters<T>) => {
-    if (timeout !== undefined) {
-      clearTimeout(timeout);
-    }
-
-    timeout = setTimeout(() => {
-      timeout = undefined;
-      func(...args);
-    }, wait);
+  const value = {
+    time: 0,
   };
-};
 
-export const throttle = <T extends (...args: any[]) => any>(func: T, wait = 0) => {
-  'worklet';
+  return (...args: any[]) => {
+    'worklet';
 
-  let timeout: NodeJS.Timeout | undefined;
-
-  return (...args: Parameters<T>) => {
-    if (timeout !== undefined) {
+    const t = Date.now();
+    const now = t - value.time;
+    if (now < wait) {
+      value.time = t;
       return;
     }
 
-    timeout = setTimeout(() => {
-      timeout = undefined;
-      func(...args);
-    }, wait);
+    worklet(...args);
+    value.time = t;
+  };
+};
+
+export const throttle = <T extends (...args: any[]) => any>(worklet: T, wait = 0) => {
+  'worklet';
+
+  const value = {
+    time: 0,
+  };
+
+  return (...args: any[]) => {
+    'worklet';
+
+    const t = Date.now();
+    const now = t - value.time;
+    if (now > wait) {
+      value.time = t;
+      worklet(...args);
+    }
   };
 };
 
