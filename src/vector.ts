@@ -3,11 +3,20 @@ export type Vector = {
   y: number;
 };
 
+/**
+ * Creates a vector object with x and y properties.
+ * @param x - The value for the x property.
+ * @param y - The value for the y property. If not provided, it defaults to the value of x.
+ * @returns An object with x and y properties.
+ */
 export const vec = (x: number, y?: number) => {
   'worklet';
   return { x, y: y ?? x };
 };
 
+/**
+ * A collection of vector functions for use in React Native worklets.
+ */
 export const vector = {
   add: (v1: Vector, v2: Vector | number) => {
     'worklet';
