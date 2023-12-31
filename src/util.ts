@@ -447,7 +447,7 @@ export const values = <T extends Record<string, any>>(obj: T) => {
  * @param length The length of the array.
  * @returns The one-dimensional array.
  */
-export const array1D = (length: number) => {
+export const array1d = (length: number) => {
   'worklet';
 
   return Array.from({ length }, (_, i) => i);
