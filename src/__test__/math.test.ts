@@ -1,8 +1,13 @@
 import {
   abs,
+  acos,
   add,
+  asin,
+  atan,
+  atan2,
   between,
   ceil,
+  cos,
   divide,
   floor,
   max,
@@ -10,8 +15,10 @@ import {
   min,
   multiply,
   round,
+  sin,
   sqrt,
   subtract,
+  tan,
   toDeg,
   toRad,
 } from '..';
@@ -194,6 +201,56 @@ describe('math functions', () => {
     it('should work with a single argument', () => {
       const result = median(1);
       expect(result).toBe(1);
+    });
+  });
+
+  describe('cos', () => {
+    it('should return the cosine of a given angle in radians', () => {
+      expect(cos(0)).toBe(1);
+      expect(cos(toRad(90))).toBeCloseTo(0);
+    });
+  });
+
+  describe('sin', () => {
+    it('should return the sine of a given angle in radians', () => {
+      expect(sin(0)).toBe(0);
+      expect(sin(toRad(90))).toBeCloseTo(1);
+    });
+  });
+
+  describe('tan', () => {
+    it('should return the tangent of a given angle in radians', () => {
+      expect(tan(0)).toBe(0);
+      expect(tan(toRad(45))).toBeCloseTo(1);
+    });
+  });
+
+  describe('acos', () => {
+    it('should return the arccosine of a given value', () => {
+      expect(acos(1)).toBe(0);
+      expect(acos(0)).toBe(Math.PI / 2);
+    });
+  });
+
+  describe('asin', () => {
+    it('should return the arcsine of a given value', () => {
+      expect(asin(0)).toBe(0);
+      expect(asin(1)).toBe(Math.PI / 2);
+    });
+  });
+
+  describe('atan', () => {
+    it('should return the arctangent of a given value', () => {
+      expect(atan(0)).toBe(0);
+      expect(atan(1)).toBeCloseTo(0.7853981633974483);
+    });
+  });
+
+  describe('atan2', () => {
+    it('should return the arctangent of the quotient of its arguments', () => {
+      expect(atan2(1, 1)).toBeCloseTo(0.7853981633974483);
+      expect(atan2(0, 1)).toBe(0);
+      expect(atan2(-1, 1)).toBeCloseTo(-0.7853981633974483);
     });
   });
 });

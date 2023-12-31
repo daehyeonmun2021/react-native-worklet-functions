@@ -184,3 +184,81 @@ export const between = (value: number, lower: number, upper: number) => {
 
   return value >= lower && value <= upper;
 };
+
+/**
+ * Calculates the cosine of a given angle in radians.
+ * @param radian The angle in radians.
+ * @returns The cosine of the angle.
+ */
+export const cos = (radian: number) => {
+  'worklet';
+
+  return Math.cos(radian);
+};
+
+/**
+ * Calculates the sine of a given angle in radians.
+ * @param radian The angle in radians.
+ * @returns The sine of the angle.
+ */
+export const sin = (radian: number) => {
+  'worklet';
+
+  return Math.sin(radian);
+};
+
+/**
+ * Calculates the tangent of a given angle in radians.
+ * @param radian The angle in radians.
+ * @returns The tangent of the angle.
+ */
+export const tan = (radian: number) => {
+  'worklet';
+
+  return Math.tan(radian);
+};
+
+/**
+ * Calculates the arccosine of a number.
+ * @param value - The number to calculate the arccosine of.
+ * @returns The arccosine value in radians.
+ */
+export const acos = (value: number) => {
+  'worklet';
+
+  return Math.acos(value);
+};
+
+/**
+ * Calculates the arcsine of a number.
+ * @param value - The number to calculate the arcsine of.
+ * @returns The arcsine of the given number.
+ */
+export const asin = (value: number) => {
+  'worklet';
+
+  return Math.asin(value);
+};
+
+/**
+ * Calculates the arctangent of a number.
+ * @param value - The number to calculate the arctangent of.
+ * @returns The arctangent of the given number.
+ */
+export const atan = (value: number) => {
+  'worklet';
+
+  return Math.atan(value);
+};
+
+/**
+ * Calculates the arctangent of the quotient of its arguments.
+ * @param y - The y-coordinate of the point.
+ * @param x - The x-coordinate of the point.
+ * @returns The angle in radians between the positive x-axis and the point (x, y).
+ */
+export const atan2 = (y: number, x: number) => {
+  'worklet';
+
+  return Math.atan2(y, x);
+};
