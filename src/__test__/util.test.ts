@@ -1,4 +1,5 @@
 import {
+  array1D,
   chunk,
   clamp,
   concat,
@@ -537,5 +538,25 @@ describe('util functions', () => {
       const result = zip(arr1, arr2);
       expect(result).toEqual([]);
     });
+  });
+});
+describe('array1D', () => {
+  it('should return an array of length n', () => {
+    const length = 5;
+    const result = array1D(length);
+    expect(result).toHaveLength(length);
+  });
+
+  it('should return an array with elements from 0 to n-1', () => {
+    const length = 5;
+    const result = array1D(length);
+    const expected = [0, 1, 2, 3, 4];
+    expect(result).toEqual(expected);
+  });
+
+  it('should return an empty array if length is 0', () => {
+    const length = 0;
+    const result = array1D(length);
+    expect(result).toEqual([]);
   });
 });

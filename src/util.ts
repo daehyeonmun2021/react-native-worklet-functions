@@ -370,7 +370,6 @@ export const find = <T>(arr: T[], predicate: (v: T) => boolean) => {
 
 /**
  * Finds the index of the first element in an array that satisfies the provided testing function.
- *
  * @template T The type of the elements in the array.
  * @param {T[]} arr The array to search in.
  * @param {(v: T) => boolean} predicate The function to execute on each value in the array.
@@ -441,4 +440,15 @@ export const values = <T extends Record<string, any>>(obj: T) => {
   'worklet';
 
   return Object.values(obj) as T[keyof T][];
+};
+
+/**
+ * Creates a one-dimensional array of the specified length. The elements of the array are the numbers from 0 to length - 1.
+ * @param length The length of the array.
+ * @returns The one-dimensional array.
+ */
+export const array1D = (length: number) => {
+  'worklet';
+
+  return Array.from({ length }, (_, i) => i);
 };
