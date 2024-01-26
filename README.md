@@ -40,6 +40,15 @@ const tap = Gesture.Tap()
 
 ### Methods
 
+#### String
+
+| Name         | Description                      |
+| ------------ | -------------------------------- |
+| `camelCase`  | Converts a string to camel case  |
+| `snakeCase`  | Converts a string to snake case  |
+| `kebabCase`  | Converts a string to kebab case  |
+| `pascalCase` | Converts a string to Pascal case |
+
 #### Util
 
 | Name                                                 | Description                                                                                                              |
