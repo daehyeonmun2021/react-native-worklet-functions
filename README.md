@@ -30,9 +30,8 @@ Use workletized functions on UI thread directly.
 import { random } from 'react-native-worklet-functions';
 
 const tap = Gesture.Tap()
-  .runOnJS(false)
   .onEnd(() => {
-    // This callback function runs on UI thread
+    // You can use util functions on UI thread
     width.value = withTiming(random(100, 300));
     height.value = withTiming(random(100, 300));
   });
@@ -42,12 +41,22 @@ const tap = Gesture.Tap()
 
 #### String
 
-| Name         | Description                      |
-| ------------ | -------------------------------- |
-| `camelCase`  | Converts a string to camel case  |
-| `snakeCase`  | Converts a string to snake case  |
-| `kebabCase`  | Converts a string to kebab case  |
-| `pascalCase` | Converts a string to Pascal case |
+| Name                     | Description                      |
+| ------------------------ | -------------------------------- |
+| `camelCase(str:string)`  | Converts a string to camel case  |
+| `snakeCase(str:string)`  | Converts a string to snake case  |
+| `kebabCase(str:string)`  | Converts a string to kebab case  |
+| `pascalCase(str:string)` | Converts a string to Pascal case |
+
+#### Color
+
+| Name                                           | Description                                                                                    |
+| ---------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `rgb(r:number, g:number, b:number)`            | Converts the given RGB values to a CSS RGB string.                                             |
+| `rgba(r:number, g:number, b:number, a:number)` | Returns the RGBA color value as a string.                                                      |
+| `hslToRgb(h:number, s:number, l:number)`       | Converts HSL (Hue, Saturation, Lightness) color values to RGB (Red, Green, Blue) color values. |
+| `hexToRgb(hex:string)`                         | Converts a hexadecimal color code to an RGB color array.                                       |
+| `hexToHsl(hex:string)`                         | Converts a hexadecimal color code to HSL (Hue, Saturation, Lightness) format.                  |
 
 #### Util
 
@@ -86,30 +95,30 @@ const tap = Gesture.Tap()
 
 #### Math
 
-| Name                                                   | Description                                                                    |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `abs(value: number)`                                   | Return the absolute value of the number                                        |
-| `acos(value: number)`                                  | Calculates the arccosine of a number in radians                                |
-| `add(a: number, b: number)`                            | Add a, b                                                                       |
-| `asin(value: number)`                                  | Calculates the arcsine of a number in radians                                  |
-| `atan(value: number)`                                  | Calculates the arctangent of a number in radians                               |
-| `atan2(y: number, x: number)`                          | Calculates the arctangent of the quotient of its arguments (y, x) in radians   |
-| `between(value: number, lower: number, upper: number)` | Check if the value is between lower and upper, inclusive                       |
-| `ceil(value: number, precision = 0)`                   | Round the value up to the nearest integer or to the specified decimal places   |
-| `cos(radian: number)`                                  | Calculates the cosine of a given angle in radians                              |
-| `divide(a: number, b: number)`                         | Divide a, b                                                                    |
-| `floor(value: number, precision = 0)`                  | Round the value down to the nearest integer or to the specified decimal places |
-| `max(...args: number[])`                               | Return the largest number among the arguments                                  |
-| `median(...args: number[])`                            | Return the median of an array of numbers                                       |
-| `min(...args: number[])`                               | Return the smallest number among the arguments                                 |
-| `multiply(a: number, b: number)`                       | Multiply a, b                                                                  |
-| `round(value: number, precision = 0)`                  | Round the value to the nearest integer or to the specified decimal places      |
-| `sin(radian: number)`                                  | Calculates the sine of a given angle in radians                                |
-| `sqrt(value: number)`                                  | Return the square root of the number                                           |
-| `subtract(a: number, b: number)`                       | Subtract a, b                                                                  |
-| `tan(radian: number)`                                  | Calculates the tangent of a given angle in radians                             |
-| `toDeg(rad: number)`                                   | Convert radians to degrees                                                     |
-| `toRad(deg: number)`                                   | Convert degrees to radians                                                     |
+| Name                                                   | Description                                                                      |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| `abs(value: number)`                                   | Return the absolute value of the number                                          |
+| `acos(value: number)`                                  | Calculates the arccosine of a number in radians                                  |
+| `add(a: number, b: number)`                            | Add a, b                                                                         |
+| `asin(value: number)`                                  | Calculates the arcsine of a number in radians                                    |
+| `atan(value: number)`                                  | Calculates the arctangent of a number in radians                                 |
+| `atan2(y: number, x: number)`                          | Calculates the arctangent of the quotient of its a**rg**uments (y, x) in radians |
+| `between(value: number, lower: number, upper: number)` | Check if the value is between lower and upper, inclusive                         |
+| `ceil(value: number, precision = 0)`                   | Round the value up to the nearest integer or to the specified decimal places     |
+| `cos(radian: number)`                                  | Calculates the cosine of a given angle in radians                                |
+| `divide(a: number, b: number)`                         | Divide a, b                                                                      |
+| `floor(value: number, precision = 0)`                  | Round the value down to the nearest integer or to the specified decimal places   |
+| `max(...args: number[])`                               | Return the largest number among the arguments                                    |
+| `median(...args: number[])`                            | Return the median of an array of numbers                                         |
+| `min(...args: number[])`                               | Return the smallest number among the arguments                                   |
+| `multiply(a: number, b: number)`                       | Multiply a, b                                                                    |
+| `round(value: number, precision = 0)`                  | Round the value to the nearest integer or to the specified decimal places        |
+| `sin(radian: number)`                                  | Calculates the sine of a given angle in radians                                  |
+| `sqrt(value: number)`                                  | Return the square root of the number                                             |
+| `subtract(a: number, b: number)`                       | Subtract a, b                                                                    |
+| `tan(radian: number)`                                  | Calculates the tangent of a given angle in radians                               |
+| `toDeg(rad: number)`                                   | Convert radians to degrees                                                       |
+| `toRad(deg: number)`                                   | Convert degrees to radians                                                       |
 
 #### Vector
 
