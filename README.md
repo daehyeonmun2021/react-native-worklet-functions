@@ -1,6 +1,6 @@
 # react-native-worklet-functions
 
-Util functions available on UI thread in React Native
+Util functions available on both JS and UI thread in React Native
 
 ## Installation
 
@@ -19,19 +19,19 @@ npm install react-native-worklet-functions
 ## Motivation
 
 One of the keys to make smooth animations in React Native is to run animation logic on UI thread. <br/>
-But when you make animation with utils like lodash, you have to make them "workletized function" to run on UI thread. <br/>
+But when you make animation with utils like lodash, you have to make them "workletized function" to run them on UI thread. <br/>
 With this library, you can use useful util functions on UI thread directly.
 
 ## Usage
 
-Use workletized functions on UI thread directly.
+Use workletized util on UI thread.
 
 ```TypeScript
 import { random } from 'react-native-worklet-functions';
 
 const tap = Gesture.Tap()
   .onEnd(() => {
-    // You can use util functions on UI thread
+    // You can use util functions on UI thread like below.
     width.value = withTiming(random(100, 300));
     height.value = withTiming(random(100, 300));
   });
