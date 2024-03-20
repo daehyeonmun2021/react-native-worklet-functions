@@ -262,3 +262,26 @@ export const atan2 = (y: number, x: number) => {
 
   return Math.atan2(y, x);
 };
+
+/**
+ * Checks if a number is odd.
+ * @param v - The number to check.
+ * @returns True if the number is odd, false otherwise.
+ */
+export const isOdd = (v: number) => {
+  'worklet';
+
+  return v % 2 !== 0;
+};
+
+/**
+ * Checks if a number is even.
+ *
+ * @param v - The number to check.
+ * @returns True if the number is even, false otherwise.
+ */
+export const isEven = (v: number) => {
+  'worklet';
+
+  return v % 2 === 0;
+};

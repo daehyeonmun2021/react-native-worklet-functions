@@ -102,7 +102,7 @@ const tap = Gesture.Tap()
 | `add(a: number, b: number)`                            | Add a, b                                                                         |
 | `asin(value: number)`                                  | Calculates the arcsine of a number in radians                                    |
 | `atan(value: number)`                                  | Calculates the arctangent of a number in radians                                 |
-| `atan2(y: number, x: number)`                          | Calculates the arctangent of the quotient of its a**rg**uments (y, x) in radians |
+| `atan2(y: number, x: number)`                          | Calculates the arctangent of the quotient of its arguments (y, x) in radians     |
 | `between(value: number, lower: number, upper: number)` | Check if the value is between lower and upper, inclusive                         |
 | `ceil(value: number, precision = 0)`                   | Round the value up to the nearest integer or to the specified decimal places     |
 | `cos(radian: number)`                                  | Calculates the cosine of a given angle in radians                                |
@@ -119,6 +119,8 @@ const tap = Gesture.Tap()
 | `tan(radian: number)`                                  | Calculates the tangent of a given angle in radians                               |
 | `toDeg(rad: number)`                                   | Convert radians to degrees                                                       |
 | `toRad(deg: number)`                                   | Convert degrees to radians                                                       |
+| `isOdd(v: number)`                                     | Checks if a number is odd. Returns true if the number is odd, false otherwise.   |
+| `isEven(v: number)`                                    | Checks if a number is even. Returns true if the number is even, false otherwise. |
 
 #### Vector
 
