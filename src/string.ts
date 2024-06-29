@@ -3,7 +3,7 @@
  * @param str - The string to convert.
  * @returns The camel case version of the string.
  */
-export const camelCase = (str: string) => {
+export function camelCase(str: string) {
   'worklet';
 
   return str
@@ -12,7 +12,7 @@ export const camelCase = (str: string) => {
       index === 0 ? word.toLowerCase() : word.toUpperCase(),
     )
     .replace(/\s+/g, '');
-};
+}
 
 /**
  * Converts a string to snake case.
@@ -20,12 +20,12 @@ export const camelCase = (str: string) => {
  * @param str - The input string.
  * @returns The snake case version of the input string.
  */
-export const snakeCase = (str: string): string => {
+export function snakeCase(str: string) {
   return str
     .replace(/[-\s]+/g, ' ')
     .replace(/(?:^\w|[A-Z]|\b\w)/g, (word) => word.toLowerCase())
     .replace(/\s+/g, '_');
-};
+}
 
 /**
  * Converts a string to kebab case.
@@ -33,21 +33,21 @@ export const snakeCase = (str: string): string => {
  * @param str - The input string.
  * @returns The kebab case string.
  */
-export const kebabCase = (str: string): string => {
+export function kebabCase(str: string) {
   return str
     .replace(/[_\s]+/g, ' ')
     .replace(/(?:^\w|[A-Z]|\b\w)/g, (word) => word.toLowerCase())
     .replace(/\s+/g, '-');
-};
+}
 
 /**
  * Converts a string to PascalCase.
  * @param str - The input string.
  * @returns The string converted to PascalCase.
  */
-export const pascalCase = (str: string): string => {
+export function pascalCase(str: string) {
   return str
     .replace(/[-_]+/g, ' ')
     .replace(/(?:^\w|[A-Z]|\b\w)/g, (word) => word.toUpperCase())
     .replace(/\s+/g, '');
-};
+}

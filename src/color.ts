@@ -5,11 +5,11 @@
  * @param b - The blue value (0-255).
  * @returns The CSS RGB string representation of the RGB values.
  */
-export const rgb = (r: number, g: number, b: number): string => {
+export function rgb(r: number, g: number, b: number): string {
   'worklet';
 
   return `rgb(${r}, ${g}, ${b})`;
-};
+}
 
 /**
  * Returns the RGBA color value as a string.
@@ -19,11 +19,11 @@ export const rgb = (r: number, g: number, b: number): string => {
  * @param a - The alpha channel value (0-1).
  * @returns The RGBA color value as a string.
  */
-export const rgba = (r: number, g: number, b: number, a: number): string => {
+export function rgba(r: number, g: number, b: number, a: number): string {
   'worklet';
 
   return `rgba(${r}, ${g}, ${b}, ${a})`;
-};
+}
 
 /**
  * Converts HSL (Hue, Saturation, Lightness) color values to RGB (Red, Green, Blue) color values.
@@ -32,7 +32,7 @@ export const rgba = (r: number, g: number, b: number, a: number): string => {
  * @param l - The lightness value (0-100).
  * @returns An array containing the RGB color values (0-255).
  */
-export const hslToRgb = (h: number, s: number, l: number): string => {
+export function hslToRgb(h: number, s: number, l: number): string {
   'worklet';
 
   s /= 100;
@@ -47,14 +47,14 @@ export const hslToRgb = (h: number, s: number, l: number): string => {
   const b = f(4);
 
   return rgb(Math.round(r * 255), Math.round(g * 255), Math.round(b * 255));
-};
+}
 
 /**
  * Converts a hexadecimal color code to an RGB color array.
  * @param hex - The hexadecimal color code to convert.
  * @returns An array containing the red, green, and blue values of the converted color.
  */
-export const hexToRgb = (hex: string) => {
+export function hexToRgb(hex: string) {
   'worklet';
 
   const bigint = parseInt(hex.slice(1), 16);
@@ -63,14 +63,14 @@ export const hexToRgb = (hex: string) => {
   const b = bigint & 255;
 
   return [r, g, b];
-};
+}
 
 /**
  * Converts a hexadecimal color code to HSL (Hue, Saturation, Lightness) format.
  * @param hex - The hexadecimal color code to convert.
  * @returns The color in HSL format.
  */
-export const hexToHsl = (hex: string) => {
+export function hexToHsl(hex: string) {
   'worklet';
 
   let r: string | number = 0;
@@ -118,4 +118,4 @@ export const hexToHsl = (hex: string) => {
   l = +(l * 100).toFixed(1);
 
   return 'hsl(' + h + ',' + s + '%,' + l + '%)';
-};
+}
