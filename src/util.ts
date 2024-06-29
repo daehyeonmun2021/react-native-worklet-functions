@@ -1,12 +1,12 @@
 /**
- * Returns a random element from an array.
- * @param arr The input array.
- * @returns A random element from the input array.
+ * Shuffles an array in place.
+ * @param arr - The array to shuffle.
+ * @returns A new shuffled array.
  */
-export function sample<T>(arr: T[]) {
+export function shuffle<T>(arr: T[]) {
   'worklet';
 
-  return arr[Math.floor(Math.random() * arr.length)];
+  return arr.slice().sort(() => Math.random() - 0.5);
 }
 
 /**
@@ -23,6 +23,17 @@ export function sampleSize<T>(arr: T[], n: number) {
   }
 
   return shuffle(arr).slice(0, n);
+}
+
+/**
+ * Returns a random element from an array.
+ * @param arr The input array.
+ * @returns A random element from the input array.
+ */
+export function sample<T>(arr: T[]) {
+  'worklet';
+
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
 /**
@@ -175,17 +186,6 @@ export function without<T>(arr: T[], ...values: T[]) {
   'worklet';
 
   return arr.filter((item) => !values.includes(item));
-}
-
-/**
- * Shuffles an array in place.
- * @param arr - The array to shuffle.
- * @returns A new shuffled array.
- */
-export function shuffle<T>(arr: T[]) {
-  'worklet';
-
-  return arr.slice().sort(() => Math.random() - 0.5);
 }
 
 /**
